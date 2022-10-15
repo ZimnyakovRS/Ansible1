@@ -1,0 +1,20 @@
+all:
+  hosts:
+  vars:
+    all_var: all_servers
+  children:
+      alma:
+        hosts:
+            a8_ansible:
+              ansible_host: 192.168.0.83
+            a8_jenkins:
+              ansible_host: 192.168.0.88
+            a8_elk:
+              ansible_host: 192.168.0.84
+
+      ol:
+        hosts:
+            ol79_81:
+              ansible_host: 192.168.0.81
+            ol79_82:
+              ansible_host: 192.168.0.82
