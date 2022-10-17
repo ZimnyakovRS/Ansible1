@@ -6,7 +6,7 @@
     - name: user ansi presents on all hosts
       user:
         name: ansi
-        uid: 4000
+#         uid: 4000
         comment: Ansible user
         state: present
         groups: wheel
