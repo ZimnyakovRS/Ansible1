@@ -1,0 +1,10 @@
+---
+- name: Раскладываем открытые ключи пользователей на хосты
+  hosts: all
+  tasks:
+    - name: доступ для пользователя ansi
+      ansible.posix.authorized_key:
+        user: ansi
+        state: present
+        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+...
