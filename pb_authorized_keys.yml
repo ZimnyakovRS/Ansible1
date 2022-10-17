@@ -3,14 +3,14 @@
   hosts: all
   gather_facts: no
   tasks:
-#     - name: user ansi presents on all hosts
-#       user:
-#         name: ansi
-#         uid: 4000
-#         comment: Ansible user
-#         state: present
-#         groups: wheel
-#         append: yes
+    - name: user ansi presents on all hosts
+      user:
+        name: ansi
+        uid: 4000
+        comment: Ansible user
+        state: present
+        groups: wheel
+        append: yes
     - name: доступ на все хосты для пользователя ansi
       ansible.posix.authorized_key:
         user: ansi
