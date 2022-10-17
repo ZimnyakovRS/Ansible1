@@ -1,6 +1,7 @@
 ---
 - name: Раскладываем открытые ключи пользователей на хосты
   hosts: all
+  gather_facts: no
   tasks:
     - name: доступ для пользователя ansi
       ansible.posix.authorized_key:
