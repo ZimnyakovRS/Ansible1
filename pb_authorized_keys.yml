@@ -1,11 +1,20 @@
 ---
-- name: Раскладываем открытые ключи пользователей на хосты
+- name: Конфигурация пользователя ansi
   hosts: all
   gather_facts: no
   tasks:
-    - name: доступ для пользователя ansi
+    - name: user ansi presents on all hosts
+      user:
+        name: ansi
+        uid: 4000
+        comment: Ansible user
+        state: present
+        groups: wheel
+        append: yes
+    - name: доступ на все хосты для пользователя ansi
       ansible.posix.authorized_key:
         user: ansi
         state: present
         key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+      loop:
 ...
