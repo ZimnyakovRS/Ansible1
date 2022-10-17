@@ -1,5 +1,5 @@
 ---
-- name: Конфигурация пользователя ansi
+- name: Конфигурация пользователей
   hosts: all
   gather_facts: no
   tasks:
@@ -11,10 +11,31 @@
 #         state: present
 #         groups: wheel
 #         append: yes
+
+#     - name: доступ на все хосты для пользователя ansi
+#       ansible.posix.authorized_key:
+#         user: ansi
+#         state: present
+#         key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+    - name: user presents on all hosts
+      user:
+        name: "{{ item }}"
+        comment: created by Ansible
+        state: present
+        groups: wheel
+        append: yes
+      loop:
+        - ZimnyakovRS
+
     - name: доступ на все хосты для пользователя ansi
       ansible.posix.authorized_key:
-        user: ansi
+        user: "{{ item.user }}"
         state: present
-        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+        key: "{{ lookup('file', 'public_keys/{{ item.keyfile }}') }}"
       loop:
+        - user: ansi
+          keyfile: ssh_rsa_ansi.pub
+        - user: ZimnyakovRS
+          keyfile: ssh_rsa_ZimnyakovRS3.pub
 ...
