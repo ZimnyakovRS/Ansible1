@@ -1,0 +1,15 @@
+---
+- name: Set timedatactl as Moscow
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Set timezone
+      timezone:
+        name: Europe/Moscow
+        
+    - name: show date
+      shell: date
+      register: output
+    
+    - debug: 
+        var: output.stdout
