@@ -1,9 +1,9 @@
 ---
 - name: Loops
-  hosts: centos
+  hosts: all
   become: yes
   tasks:
-    - name: Say hell
+    - name: Say hello
       debug: 
         msg: "Hello {{ item }}"
       loop:
