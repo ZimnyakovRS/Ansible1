@@ -1,0 +1,6 @@
+---
+ansible_connection: ssh
+ansible_user: ansi
+ansible_ssh_pass: ansi
+all_var: all_servers
+...

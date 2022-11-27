@@ -1,0 +1,11 @@
+all:
+  hosts:
+    c7gnome:
+      ansible_host: 192.168.0.79
+    alt10:
+      ansible_host: 192.168.0.86
+  vars:
+      ansible_connection: ssh
+      ansible_user: ansi
+      ansible_ssh_pass: ansi
+      all_var: all_servers

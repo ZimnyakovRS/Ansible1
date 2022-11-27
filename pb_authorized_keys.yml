@@ -18,7 +18,7 @@
 #         state: present
 #         key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
 
-    - name: user presents on all hosts
+    - name: Создание пользователей
       user:
         name: "{{ item }}"
         comment: created by Ansible
@@ -28,14 +28,28 @@
       loop:
         - ZimnyakovRS
 
-    - name: доступ на все хосты для пользователя ansi
+    - name: test
+      template:
+      ignore_errors: yes
+
+
+    - name:
+      file:
+
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: /home/ZimnyakovRS/.ssh
+        state: directory
+        mode: '0700'
+        ignore_errors: yes
+
+
+
+
+    - name: доступ на все хосты для пользователя {{ item.user }}
       ansible.posix.authorized_key:
         user: "{{ item.user }}"
         state: present
-        key: "{{ lookup('file', 'public_keys/{{ item.keyfile }}') }}"
-      loop:
-        - user: ansi
-          keyfile: ssh_rsa_ansi.pub
-        - user: ZimnyakovRS
-          keyfile: ssh_rsa_ZimnyakovRS3.pub
+        key: "{{ lookup('file', '{{ item.keyf }}') }}"
+      loop: {{ ssh_rsa_pub_keys }}
 ...
