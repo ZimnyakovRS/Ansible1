@@ -8,3 +8,7 @@ ol:
   hosts:
       ol79_81:
       ol79_82:
+
+redis_cluster:
+  children:
+    alma:
