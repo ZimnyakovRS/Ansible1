@@ -1,0 +1,9 @@
+---
+- name: Play - Create user
+  hosts: all
+  gather_facts: yes
+  roles:
+    - create_user_role
+
+
+    
