@@ -1,9 +1,9 @@
 /.idea
-*.log
 some_instuctions/Новый текстовый документ.TXT
 trash/*
-logs
+#logs
 /shelf/
 /workspace.xml
 /roles/davidwittman.redis/
 /trash/
+/logs/*
