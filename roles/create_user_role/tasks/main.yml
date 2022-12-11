@@ -1,24 +1,30 @@
 ---
 # tasks file for create_user_role
-- name: Add the user {{ user }} with a primary group of 'wheel'
+- name: Add the user {{ user }} with a group of 'wheel'
   ansible.builtin.user:
     name: "{{ user }}"
+    password: "{{ user_passwd }}"
     shell: /bin/bash
-    comment: Super puper admin
+    comment: "{{ user_fio }} - created by Ansible"
     groups:
       - wheel
+    append: yes
 
 - name: Create a directory .ssh if it does not exist
   ansible.builtin.file:
     path: "~{{ user }}/.ssh"
     state: directory
     mode: '0700'
+    owner: "{{ user }}"
+    group: "{{ user }}"
 
 - name: Create authorized_keys
   ansible.builtin.file:
     path: "~{{ user }}/.ssh/authorized_keys"
     mode: '0600'
     state: touch
+    owner: "{{ user }}"
+    group: "{{ user }}"
 
 - name: Ensure keys are present
   ansible.builtin.lineinfile:

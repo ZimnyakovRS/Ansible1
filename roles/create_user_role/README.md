@@ -8,9 +8,11 @@ Role Variables
 --------------
 
 
-- user # Имя пользователя
-- authorized_keys_list # список ключей для авторизации, 
-по умолчанию есть два ключа
+- `user` - Имя пользователя
+- `user_fio` - Комментарий к создаваемому пользователю.
+- `authorized_keys_list` - список ключей для авторизации, 
+по умолчанию есть два ключа. 
+Находится в `defaults/main/auth_keys_enc.yml`, который зашифрован.
 
 Example Playbook
 ----------------
@@ -26,5 +28,5 @@ Including an example of how to use your role (for instance, with variables passe
 
 Author Information
 ------------------
-- name: Zimnyakov Ruslan
-- email: rzimnyakovwork@gmail.com
+- `Zimnyakov Ruslan`
+- `rzimnyakovwork@gmail.com`
