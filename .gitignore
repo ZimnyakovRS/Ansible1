@@ -3,3 +3,7 @@
 some_instuctions/Новый текстовый документ.TXT
 trash/*
 logs
+/shelf/
+/workspace.xml
+/roles/davidwittman.redis/
+/trash/
