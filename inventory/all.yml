@@ -16,8 +16,8 @@ all:
             ansible_host: 192.168.0.82
     red73_87:
             ansible_host: 192.168.0.87
-    zorinos:
-            ansible_host: 192.168.0.99
+#    zorinos:
+#            ansible_host: 192.168.0.99
   vars:
       ansible_connection: ssh
       ansible_user: ansi
