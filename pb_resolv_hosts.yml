@@ -1,0 +1,6 @@
+---
+- name: Play - change /etc/hosts
+  hosts: all
+  gather_facts: yes
+  roles:
+    - zimnyakovrs.resolve_hosts

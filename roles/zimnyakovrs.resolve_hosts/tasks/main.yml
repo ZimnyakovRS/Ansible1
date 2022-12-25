@@ -1,0 +1,8 @@
+---
+- name: change /etc/hosts
+  ansible.builtin.lineinfile:
+    path: "/etc/hosts"
+    regexp: "^{{ item.pattern }}$"
+    line: "{{ item.line }}"
+    state: present
+  loop: "{{ host_list }}"
